@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الشخصية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .profile-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            padding: 5px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .welcome-message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(106, 17, 203, 0.5), transparent);
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        /* أنماط قسم الحسابات الشخصية */
+        .social-section-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-item {
+            position: relative;
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+        }
+
+        .social-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .social-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .social-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-item:hover .social-icon {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .social-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-item:hover .social-name {
+            color: #fff;
+        }
+
+        /* ألوان خاصة لكل منصة */
+        .linkedin {
+            --primary-color: #0077b5;
+            --secondary-color: #005885;
+        }
+
+        .twitter {
+            --primary-color: #1da1f2;
+            --secondary-color: #0d8bd9;
+        }
+
+        .github {
+            --primary-color: #333;
+            --secondary-color: #24292e;
+        }
+
+        .instagram {
+            --primary-color: #e4405f;
+            --secondary-color: #c13584;
+        }
+
+        .facebook {
+            --primary-color: #1877f2;
+            --secondary-color: #166fe5;
+        }
+
+        .youtube {
+            --primary-color: #ff0000;
+            --secondary-color: #cc0000;
+        }
+
+        .whatsapp {
+            --primary-color: #25d366;
+            --secondary-color: #128c7e;
+        }
+
+        .telegram {
+            --primary-color: #0088cc;
+            --secondary-color: #006699;
+        }
+
+        .linkedin .social-icon { color: #0077b5; }
+        .twitter .social-icon { color: #1da1f2; }
+        .github .social-icon { color: #333; }
+        .instagram .social-icon { color: #e4405f; }
+        .facebook .social-icon { color: #1877f2; }
+        .youtube .social-icon { color: #ff0000; }
+        .whatsapp .social-icon { color: #25d366; }
+        .telegram .social-icon { color: #0088cc; }
+
+        .contact-info {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #555;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(106, 17, 203, 0.1);
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+            color: #6a11cb;
+            width: 20px;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 30px 20px;
+            }
+
+            .profile-image-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .social-icon {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-container {
+                padding: 20px 15px;
+            }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 1.8rem;
+            }
+
+            .profile-title {
+                font-size: 1rem;
+            }
+
+            .welcome-message {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .social-icon {
+                font-size: 1.5rem;
+            }
+
+            .social-name {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* تأثيرات إضافية */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(106, 17, 203, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(106, 17, 203, 0);
+            }
+        }
+
+        /* زر تبديل الوضع المظلم */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: #6a11cb;
+        }
+
+        .theme-toggle:hover {
+            background: #f0f0f0;
+            transform: rotate(15deg);
+        }
+
+        /* نمط مظلم */
+        .dark-theme {
+            background: linear-gradient(135deg, #1f1f1f 0%, #111 100%);
+            color: #f0f0f0;
+        }
+
+        .dark-theme .profile-container {
+            background: rgba(30, 30, 30, 0.95);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-theme .profile-title {
+            color: #ccc;
+        }
+
+        .dark-theme .welcome-message {
+            color: #ddd;
+        }
+
+        .dark-theme .social-section-title {
+            color: #f0f0f0;
+        }
+
+        .dark-theme .social-item {
+            background: #2a2a2a;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-theme .social-name {
+            color: #f0f0f0;
+        }
+
+        .dark-theme .contact-info {
+            background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+        }
+
+        .dark-theme .contact-title {
+            color: #f0f0f0;
+        }
+
+        .dark-theme .contact-item {
+            color: #ddd;
+        }
+
+        .dark-theme .theme-toggle {
+            border-color: #555;
+        }
+
+        .dark-theme .theme-toggle i {
+            color: #9d65ff;
+        }
+
+        .dark-theme .theme-toggle:hover {
+            background: #333;
+        }
+
+        .dark-theme .divider {
+            background: linear-gradient(to right, transparent, rgba(157, 101, 255, 0.5), transparent);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img src="/home/ubuntu/profile-sanaa-background-clear.png" alt="صورة الملف الشخصي" class="profile-image" id="profile-image">
+            </div>
+            <h1 class="profile-name">اسمك الكامل</h1>
+            <p class="profile-title">المسمى الوظيفي | التخصص</p>
+            <div class="welcome-message">
+                مرحباً بكم في موقع البروفيسور
+                ( ابو محمود)
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="social-section-title">تواصل معي</h2>
+        <div class="social-grid">
+            <a href="https://linkedin.com/in/your-profile" class="social-item linkedin" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="social-name">LinkedIn</div>
+            </a>
+
+            <a href="https://twitter.com/your-handle" class="social-item twitter" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="social-name">Twitter</div>
+            </a>
+
+            <a href="https://github.com/your-username" class="social-item github" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div class="social-name">GitHub</div>
+            </a>
+
+            <a href="https://www.instagram.com/essa0924737?igsh=azM4MzI2Mzh6OXhv" class="social-item instagram" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="social-name">Instagram</div>
+            </a>
+
+            <a href="https://www.facebook.com/share/17vNY5yLvK/" class="social-item facebook" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-name">Facebook</div>
+            </a>
+
+            <a href="https://youtube.com/your-channel" class="social-item youtube" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="social-name">YouTube</div>
+            </a>
+
+            <a href="https://wa.me/your-number" class="social-item whatsapp" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="social-name">WhatsApp</div>
+            </a>
+
+            <a href="https://t.me/your-username" class="social-item telegram" target="_blank" rel="noopener">
+                <div class="social-icon">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <div class="social-name">Telegram</div>
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <h3 class="contact-title">معلومات الاتصال المباشر</h3>
+            <div class="contact-item" onclick="copyToClipboard('your-email@example.com')">
+                <i class="fas fa-envelope"></i>
+                <span>your-email@example.com</span>
+            </div>
+            <div class="contact-item" onclick="copyToClipboard('+966 50 123 4567')">
+                <i class="fas fa-phone"></i>
+                <span>+966 50 123 4567</span>
+            </div>
+            <div class="contact-item" onclick="copyToClipboard('الرياض، المملكة العربية السعودية')">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>الرياض، المملكة العربية السعودية</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تبديل الوضع المظلم/الفاتح
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-toggle i');
+            
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('darkTheme', 'true');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('darkTheme', 'false');
+            }
+        }
+
+        // استرجاع إعداد المظهر المحفوظ
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('darkTheme') === 'true') {
+                document.body.classList.add('dark-theme');
+                document.querySelector('.theme-toggle i').classList.remove('fa-moon');
+                document.querySelector('.theme-toggle i').classList.add('fa-sun');
+            }
+        });
+
+        // نسخ إلى الحافظة
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('تم نسخ: ' + text);
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
+

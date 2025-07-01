@@ -1,0 +1,346 @@
+<!-- قسم الملف الشخصي مع الحسابات الاجتماعية - نسخة مبسطة للدمج -->
+<!-- يمكن نسخ هذا الكود ولصقه في أي موقع موجود -->
+
+<style>
+/* أنماط قسم الملف الشخصي والحسابات الاجتماعية */
+.my-profile-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.my-profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.my-profile-image-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    padding: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.my-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.my-profile-image:hover {
+    transform: scale(1.05);
+}
+
+.my-profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.my-profile-title {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.my-welcome-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 25px;
+    padding: 0 15px;
+}
+
+.my-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(106, 17, 203, 0.3), transparent);
+    margin: 25px 0;
+    width: 100%;
+}
+
+.my-social-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.my-social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.my-social-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+.my-social-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.my-social-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.my-social-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ألوان المنصات */
+.my-social-linkedin:hover { background: #0077b5; color: white; }
+.my-social-twitter:hover { background: #1da1f2; color: white; }
+.my-social-github:hover { background: #333; color: white; }
+.my-social-instagram:hover { background: #e4405f; color: white; }
+.my-social-facebook:hover { background: #1877f2; color: white; }
+.my-social-youtube:hover { background: #ff0000; color: white; }
+.my-social-whatsapp:hover { background: #25d366; color: white; }
+.my-social-telegram:hover { background: #0088cc; color: white; }
+
+.my-social-linkedin .my-social-icon { color: #0077b5; }
+.my-social-twitter .my-social-icon { color: #1da1f2; }
+.my-social-github .my-social-icon { color: #333; }
+.my-social-instagram .my-social-icon { color: #e4405f; }
+.my-social-facebook .my-social-icon { color: #1877f2; }
+.my-social-youtube .my-social-icon { color: #ff0000; }
+.my-social-whatsapp .my-social-icon { color: #25d366; }
+.my-social-telegram .my-social-icon { color: #0088cc; }
+
+.my-contact-info {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.my-contact-title {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.my-contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.my-contact-item:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.my-contact-item i {
+    margin-left: 8px;
+    color: #007bff;
+    width: 16px;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .my-profile-section {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .my-profile-name {
+        font-size: 1.5rem;
+    }
+    
+    .my-profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+</style>
+
+<!-- HTML للقسم -->
+<div class="my-profile-section">
+    <div class="my-profile-header">
+        <div class="my-profile-image-container">
+            <img src="/home/ubuntu/profile-sanaa-background-clear.png" alt="صورة الملف الشخصي" class="my-profile-image">
+        </div>
+        <h1 class="my-profile-name">اسمك الكامل</h1>
+        <p class="my-profile-title">المسمى الوظيفي | التخصص</p>
+        <div class="my-welcome-message">
+            مرحباً بكم في موقع البروفيسور
+            ( ابو محمود)
+        </div>
+    </div>
+
+    <div class="my-divider"></div>
+
+    <h2 class="my-social-title">تواصل معي</h2>
+    <div class="my-social-grid">
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/your-profile" class="my-social-item my-social-linkedin" target="_blank">
+            <i class="fab fa-linkedin-in my-social-icon"></i>
+            <div class="my-social-name">LinkedIn</div>
+        </a>
+
+        <!-- Twitter -->
+        <a href="https://twitter.com/your-handle" class="my-social-item my-social-twitter" target="_blank">
+            <i class="fab fa-twitter my-social-icon"></i>
+            <div class="my-social-name">Twitter</div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/your-username" class="my-social-item my-social-github" target="_blank">
+            <i class="fab fa-github my-social-icon"></i>
+            <div class="my-social-name">GitHub</div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/essa0924737?igsh=azM4MzI2Mzh6OXhv" class="my-social-item my-social-instagram" target="_blank">
+            <i class="fab fa-instagram my-social-icon"></i>
+            <div class="my-social-name">Instagram</div>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/17vNY5yLvK/" class="my-social-item my-social-facebook" target="_blank">
+            <i class="fab fa-facebook-f my-social-icon"></i>
+            <div class="my-social-name">Facebook</div>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/your-channel" class="my-social-item my-social-youtube" target="_blank">
+            <i class="fab fa-youtube my-social-icon"></i>
+            <div class="my-social-name">YouTube</div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/your-number" class="my-social-item my-social-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp my-social-icon"></i>
+            <div class="my-social-name">WhatsApp</div>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/your-username" class="my-social-item my-social-telegram" target="_blank">
+            <i class="fab fa-telegram-plane my-social-icon"></i>
+            <div class="my-social-name">Telegram</div>
+        </a>
+    </div>
+
+    <div class="my-contact-info">
+        <h3 class="my-contact-title">معلومات الاتصال</h3>
+        <div class="my-contact-item" onclick="copyText('your-email@example.com')">
+            <i class="fas fa-envelope"></i>
+            <span>your-email@example.com</span>
+        </div>
+        <div class="my-contact-item" onclick="copyText('+966 50 123 4567')">
+            <i class="fas fa-phone"></i>
+            <span>+966 50 123 4567</span>
+        </div>
+        <div class="my-contact-item" onclick="copyText('الرياض، السعودية')">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>الرياض، السعودية</span>
+        </div>
+    </div>
+</div>
+
+<script>
+// دالة نسخ النص
+function copyText(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+            showMessage('تم نسخ المعلومات!');
+        });
+    } else {
+        // طريقة بديلة للمتصفحات القديمة
+        var textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showMessage('تم نسخ المعلومات!');
+    }
+}
+
+// دالة إظهار الرسائل
+function showMessage(message) {
+    var notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    `;
+    document.body.appendChild(notification);
+    setTimeout(function() {
+        document.body.removeChild(notification);
+    }, 2000);
+}
+</script>
+
+<!-- 
+تعليمات الاستخدام:
+1. تأكد من تضمين Font Awesome في موقعك:
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+2. لتغيير صورة البروفايل:
+   - استبدل رابط الصورة في السمة src للعنصر img بالرابط الخاص بصورتك:
+     <img src="رابط-صورتك-هنا" alt="صورة الملف الشخصي" class="my-profile-image">
+
+3. لتغيير المعلومات الشخصية:
+   - استبدل "اسمك الكامل" باسمك الحقيقي
+   - استبدل "المسمى الوظيفي | التخصص" بمعلوماتك
+   - قم بتعديل نص الترحيب في قسم my-welcome-message
+
+4. لتغيير روابط حسابات التواصل الاجتماعي:
+   - استبدل الروابط في السمة href لكل عنصر a بروابط حساباتك الشخصية
+
+5. لتغيير معلومات الاتصال:
+   - استبدل البريد الإلكتروني ورقم الهاتف والموقع بمعلوماتك الخاصة
+
+6. لإزالة أي منصة لا تريدها:
+   - احذف كتلة العنصر a الخاصة بتلك المنصة
+
+7. لتخصيص الألوان:
+   - يمكنك تغيير التدرج اللوني لإطار الصورة بتعديل القيمة:
+     background: linear-gradient(45deg, #6a11cb, #2575fc);
+   - يمكنك تغيير لون الفاصل بتعديل القيمة:
+     background: linear-gradient(to right, transparent, rgba(106, 17, 203, 0.3), transparent);
+-->
+
